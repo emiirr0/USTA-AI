@@ -1,0 +1,9 @@
+* text=auto
+*.bat text eol=crlf
+*.sh  text eol=lf
+*.woff2 binary
+*.png   binary
+*.docx  binary
+*.pptx  binary
+usta/web/app.js linguist-generated=true
+usta/web/vendor/** linguist-vendored=true

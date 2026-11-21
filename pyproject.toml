@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "usta-ai"
+version = "2.0.0"
+description = "Yapay zekâ destekli enjeksiyon presi operatör danışmanı — AI önerir, insan onaylar, makine korunur."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+dependencies = []
+
+[project.optional-dependencies]
+opcua = ["asyncua>=1.1"]
+pdf = ["pypdf>=4.0"]
+gelistirme = ["pytest>=7", "asyncua>=1.1", "pypdf>=4.0"]
+
+[project.scripts]
+usta = "usta.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["usta*"]
+
+[tool.setuptools.package-data]
+usta = ["web/*", "web/vendor/*", "web/fonts/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::RuntimeWarning", "ignore::DeprecationWarning"]

@@ -1,0 +1,8 @@
+# USTA·AI çekirdeği YALNIZ Python standart kütüphanesini kullanır:
+# kurulması gereken paket YOKTUR. Aşağıdakiler isteğe bağlıdır.
+
+# Gerçek pres bağlantısı (OPC UA / Euromap 77):
+# asyncua>=1.1
+
+# Bilgi tabanına PDF yükleyebilmek için:
+# pypdf>=4.0

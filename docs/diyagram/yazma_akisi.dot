@@ -1,0 +1,15 @@
+digraph G {
+  graph [rankdir=LR, fontname="Helvetica", bgcolor="white", pad=0.25, nodesep=0.25, ranksep=0.35];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, fillcolor="#F4F6F8", color="#263039"];
+  edge [color="#5C6B75"];
+  a [label="Öneri\n(AI ya da elle)"];
+  b [label="Doğrulama\nalan · sayı · aralık\nadım · rol · mod", fillcolor="#E6F4EA", color="#3FB950"];
+  r [label="RED\nnedenleriyle", fillcolor="#FDECEC", color="#E5484D"];
+  c [label="Onay belirteci\n90 sn · tek kullanım"];
+  d [label="İnsan onayı\n(usta/mühendis)", fillcolor="#FFF4DE", color="#F5A623"];
+  e [label="Yeniden denetim\nrol/mod hâlâ uygun mu"];
+  f [label="Makineye yaz\n+ geri oku"];
+  g [label="Kayıt defteri\n(silinemez)", fillcolor="#E8F6FA", color="#35C4E0"];
+  a -> b -> c -> d -> e -> f -> g;
+  b -> r [style=dashed, color="#E5484D"];
+}

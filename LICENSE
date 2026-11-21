@@ -1,0 +1,13 @@
+Copyright (c) 2026 USTA·AI geliştiricisi. Tüm hakları saklıdır.
+
+Bu yazılım ticari bir üründür. Yazılı izin olmadan kopyalanamaz, dağıtılamaz,
+değiştirilerek yeniden satılamaz. Değerlendirme amacıyla kendi bilgisayarınızda
+çalıştırmanıza izin verilir.
+
+(Açık kaynak yapmak isterseniz bu dosyayı MIT ya da Apache-2.0 metniyle
+değiştirebilirsiniz.)
+
+Üçüncü taraf bileşenler kendi lisanslarıyla gelir:
+  • React / ReactDOM (usta/web/vendor) — MIT Lisansı, Meta Platforms, Inc.
+  • IBM Plex yazı tipleri (usta/web/fonts) — SIL Open Font License 1.1
+    (usta/web/fonts/OFL-LICENSE.txt)

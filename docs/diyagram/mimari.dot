@@ -1,0 +1,28 @@
+digraph G {
+  graph [rankdir=LR, fontname="Helvetica", bgcolor="white", pad=0.3, nodesep=0.35, ranksep=0.55];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#263039", fillcolor="#F4F6F8", penwidth=1.2];
+  edge  [fontname="Helvetica", fontsize=9, color="#5C6B75"];
+  pres [label="Enjeksiyon presi\n(PLC)", fillcolor="#E8EEF2"];
+  subgraph cluster_edge {
+    label="EDGE CİHAZI  ·  python -m usta  (Raspberry Pi / mini PC / endüstriyel IPC)"; fontname="Helvetica-Bold"; fontsize=11;
+    style="rounded,dashed"; color="#F5A623";
+    adaptor [label="Makine bağdaştırıcısı\nOPC UA  |  simülatör"];
+    cekirdek [label="Çekirdek (app.py)\noturum · yetki · işler", fillcolor="#FFF4DE", color="#F5A623"];
+    kapi [label="Güvenlik kapısı\naralık · adım · rol · mod\ntek kullanımlık onay", fillcolor="#E6F4EA", color="#3FB950"];
+    ai [label="AI aracısı\nClaude · Ollama · Çevrimdışı uzman"];
+    kb [label="Bilgi tabanı\ndatasheet · reçete · not"];
+    db [label="SQLite\nişler · DEĞİŞTİRİLEMEZ kayıt\nalarm geçmişi"];
+    srv [label="Yerel HTTP sunucusu\nREST API + arayüz"];
+  }
+  panel [label="Operatör paneli\ntarayıcı / tablet", fillcolor="#E8EEF2"];
+  gozcu [label="GÖZCÜ·AI\nsayaclar.json · gecmis.jsonl", fillcolor="#E8F6FA", color="#35C4E0"];
+  bulut [label="Claude API\n(isteğe bağlı)", shape=ellipse, fillcolor="white", style="dashed"];
+  pres -> adaptor [label="okuma (varsayılan)"];
+  adaptor -> cekirdek;
+  cekirdek -> kapi [label="yazma isteği"];
+  kapi -> adaptor [label="onaylı yazma\n+ geri okuma", color="#3FB950", fontcolor="#2E7D32"];
+  cekirdek -> ai; ai -> kb; ai -> bulut [style=dashed];
+  cekirdek -> db;
+  gozcu -> cekirdek [label="salt okunur", style=dashed];
+  cekirdek -> srv -> panel [dir=both];
+}

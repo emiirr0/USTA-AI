@@ -1,0 +1,50 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    name: Python ${{ matrix.python }} · ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.9", "3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Geliştirme bağımlılıkları
+        run: python -m pip install -r requirements-dev.txt
+      - name: Testler
+        run: python -m pytest -q
+      - name: Kurulum kontrolü
+        run: python -m usta kontrol
+        env:
+          USTA_AI: uzman
+
+  arayuz:
+    name: Arayüz derlemesi güncel mi + tarayıcı testi
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Derle
+        working-directory: arayuz
+        run: npm ci && npm run build
+      - name: Depodaki derleme kaynakla aynı mı
+        run: git diff --exit-code -- usta/web
+      - name: Tarayıcıda uçtan uca test
+        run: |
+          python -m pip install pytest playwright
+          python -m playwright install --with-deps chromium
+          python -m pytest -q tests/test_arayuz_e2e.py

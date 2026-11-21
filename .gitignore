@@ -1,0 +1,18 @@
+# çalışma verisi (veritabanı, log, kişisel ayarlar) — depoya girmez
+veri/
+.env
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+# Node (yalnız arayüz geliştirme)
+arayuz/node_modules/
+# işletim sistemi
+.DS_Store
+Thumbs.db
+desktop.ini
